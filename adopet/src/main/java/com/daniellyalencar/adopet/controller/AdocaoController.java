@@ -47,7 +47,7 @@ public class AdocaoController {
 
             Adocao novaAdocao = new Adocao(pet, tutor, adocaoDTO.getMotivo());
             repository.save(novaAdocao);
-            return ResponseEntity.ok("Adoção solicita com sucesso!");
+            return ResponseEntity.ok("Solicitação de adoção recebida com sucesso!");
 
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Erro ao solicitar adoção");

@@ -36,7 +36,7 @@ public class Tutor {
     @JsonManagedReference("tutor_adocoes")
     private List<Adocao> adocoes;
 
-    public Tutor(Tutor tutor) {
+    public Tutor() {
     }
 
     public Tutor(String nome, String telefone, String email) {
