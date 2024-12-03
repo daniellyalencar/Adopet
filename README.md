@@ -9,19 +9,37 @@ Criação das classes controller (realizam apenas intermédia/chamada entre clie
 Criação das interfaces repository (camada de persistência com entidades JPA para acesso ao banco de dados) - consultas otimizadas com filtros para melhor performance. <br>
 
 
-### 🛠️ Ferramentas utilizadas
+### ⚙️ Ferramentas utilizadas
 - Spring
 - Modelo MVC
 - Intellij IDEA
 - Paradigma de orintação de objetos
 - Insomnia
 
-### Funcionalidades
+### 🛠️ Funcionalidades
+- Aprovar Adoção
+- Reprovar Adoção
+- Atualizar Tutor
 - Cadastrar Abrigo
 - Cadastrar Pet em um Abrigo
 - Cadastrar Tutor
 - Solicitar Adoção
 - Listar Abrigos
+- Listar Adoções
 - Listar Pets
 - Listar Pets de um Abrigo
+- Listar Tutores
 
+### :recycle: Refatoração
+O projeto passou por uma refatoração significativa para melhorar a estrutura do código e a eficiência do sistema. As principais mudanças incluem:
+
+- **Separação de responsabilidades**: As classes foram reorganizadas para seguir o princípio de responsabilidade única, facilitando a manutenção e a escalabilidade.
+- **Otimização de consultas**: As consultas ao banco de dados foram otimizadas para reduzir o tempo de resposta e melhorar a performance.
+- **Validações centralizadas**: As validações foram centralizadas em componentes específicos, garantindo consistência e reutilização de código.
+- **Melhoria na legibilidade**: O código foi refatorado para ser mais legível e compreensível, facilitando a colaboração entre desenvolvedores.
+
+### :white_check_mark: Vantagens da Refatoração
+- **Manutenção facilitada**: Com a separação de responsabilidades e a melhoria na legibilidade, a manutenção do código se torna mais simples e eficiente.
+- **Performance aprimorada**: A otimização das consultas e a centralização das validações resultam em um sistema mais rápido e responsivo.
+- **Escalabilidade**: A nova estrutura do código permite que o sistema seja facilmente escalado para adicionar novas funcionalidades ou suportar um maior número de usuários.
+- **Reutilização de código**: Componentes reutilizáveis reduzem a duplicação de código e facilitam a implementação de novas funcionalidades.
