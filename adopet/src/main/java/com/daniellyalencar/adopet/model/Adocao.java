@@ -50,6 +50,16 @@ public class Adocao {
     public Adocao() {
     }
 
+    public Adocao(Adocao adocao) {
+        this.id = adocao.id;
+        this.data = adocao.data;
+        this.tutor = adocao.tutor;
+        this.pet = adocao.pet;
+        this.motivo = adocao.motivo;
+        this.status = adocao.status;
+        this.justificativaStatus = adocao.justificativaStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,6 +107,15 @@ public class Adocao {
 
     public void setJustificativaStatus(String justificativaStatus) {
         this.justificativaStatus = justificativaStatus;
+    }
+
+    public void marcarComoAprovado() {
+        this.status = StatusAdocao.APROVADO;
+    }
+
+    public void marcarComoReprovado(String justificativa) {
+        this.status = StatusAdocao.REPROVADO;
+        this.justificativaStatus = justificativa;
     }
 
 }

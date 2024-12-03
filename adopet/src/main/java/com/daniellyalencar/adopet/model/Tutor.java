@@ -1,10 +1,9 @@
 package com.daniellyalencar.adopet.model;
 
+import com.daniellyalencar.adopet.dto.AtualizacaoTutorDto;
+import com.daniellyalencar.adopet.dto.CadastroTutorDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,17 +17,12 @@ public class Tutor {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
     @Column(name = "nome")
     private String nome;
 
-    @NotBlank
-    @Pattern(regexp = "\\(?\\d{2}\\)?\\d?\\d{4}-?\\d{4}")
     @Column(name = "telefone")
     private String telefone;
 
-    @NotBlank
-    @Email
     @Column(name = "email")
     private String email;
 
@@ -43,6 +37,12 @@ public class Tutor {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Tutor(CadastroTutorDto dto) {
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
     }
 
     @Override
@@ -80,6 +80,12 @@ public class Tutor {
 
     public void setAdocoes(List<Adocao> adocoes) {
         this.adocoes = adocoes;
+    }
+
+    public void atualizar(AtualizacaoTutorDto dto) {
+        this.nome = dto.nome();
+        this.telefone = dto.telefone();
+        this.email = dto.email();
     }
 
 }

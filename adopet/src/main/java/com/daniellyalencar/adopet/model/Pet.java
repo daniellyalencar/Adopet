@@ -1,10 +1,8 @@
 package com.daniellyalencar.adopet.model;
 
+import com.daniellyalencar.adopet.dto.CadastroPetDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -18,27 +16,21 @@ public class Pet {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
     @Column(name = "tipo")
     private TipoPet tipo;
 
-    @NotBlank
     @Column(name = "nome")
     private String nome;
 
-    @NotBlank
     @Column(name = "raca")
     private String raca;
 
-    @NotNull
     @Column(name = "idade")
     private Integer idade;
 
-    @NotBlank
     @Column(name = "cor")
     private String cor;
 
-    @NotNull
     @Column(name = "peso")
     private Float peso;
 
@@ -55,6 +47,20 @@ public class Pet {
     private Adocao adocao;
 
     public Pet() {
+    }
+
+    public Pet(Pet pet) {
+    }
+
+    public Pet(CadastroPetDto dto, Abrigo abrigo) {
+        this.nome = dto.nome();
+        this.tipo = TipoPet.valueOf(dto.tipo());
+        this.peso = (float) dto.peso();
+        this.raca = dto.raca();
+        this.idade = dto.idade();
+        this.cor = dto.cor();
+        this.abrigo = abrigo;
+        this.adotado = false;
     }
 
     @Override

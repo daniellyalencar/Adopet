@@ -1,38 +1,49 @@
 package com.daniellyalencar.adopet.controller;
 
-import com.daniellyalencar.adopet.model.Tutor;
-import com.daniellyalencar.adopet.repository.TutorRepository;
+import com.daniellyalencar.adopet.dto.AtualizacaoTutorDto;
+import com.daniellyalencar.adopet.dto.CadastroTutorDto;
+import com.daniellyalencar.adopet.service.TutorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tutor")
 public class TutorController {
 
     @Autowired
-    private TutorRepository repository;
+    private TutorService service;
 
     @PostMapping
-    public ResponseEntity<String> cadastrar(@RequestBody @Valid Tutor tutor) {
-        boolean telefoneJaCadastrado = repository.existsByTelefone(tutor.getTelefone());
-        boolean emailJaCadastrado = repository.existsByEmail(tutor.getEmail());
-
-        if (telefoneJaCadastrado || emailJaCadastrado) {
-            return ResponseEntity.badRequest().body("Dados já cadastrados para outro tutor!");
-        } else {
-            repository.save(tutor);
+    @Transactional
+    public ResponseEntity<String> cadastrar(@RequestBody @Valid CadastroTutorDto dto) {
+        try {
+            service.cadastrar(dto);
             return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Dados já cadastrados para outro tutor!");
         }
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<String> atualizar(@RequestBody @Valid Tutor tutor) {
-        repository.save(tutor);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> atualizar(@RequestBody @Valid AtualizacaoTutorDto dto) {
+        try {
+            service.atualizar(dto);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CadastroTutorDto>> listar() {
+        List<CadastroTutorDto> tutores = service.listar();
+        return ResponseEntity.ok(tutores);
     }
 
 }
