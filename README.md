@@ -43,3 +43,9 @@ O projeto passou por uma refatoração significativa para melhorar a estrutura d
 - **Performance aprimorada**: A otimização das consultas e a centralização das validações resultam em um sistema mais rápido e responsivo.
 - **Escalabilidade**: A nova estrutura do código permite que o sistema seja facilmente escalado para adicionar novas funcionalidades ou suportar um maior número de usuários.
 - **Reutilização de código**: Componentes reutilizáveis reduzem a duplicação de código e facilitam a implementação de novas funcionalidades.
+
+### 🔍 Testes
+Utilização do Insomnia para testar requisições da API.<br>
+<br>
+![image](https://github.com/user-attachments/assets/3353804c-f8e1-4c3d-b3e6-8baa4022e4ce)
+
